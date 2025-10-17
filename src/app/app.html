@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>AssemblyAI VTT subtitle generator (frontend only)</h1>
+
+  <label>
+    Select video/audio file:
+    <input type="file" (change)="onFileSelected($event)" accept="audio/*,video/*" />
+  </label>
+
+  <div style="margin-top:12px;">
+    <button (click)="start()" [disabled]="!file || status==='uploading' || status==='processing'">Generate .vtt</button>
+  </div>
+
+  <div *ngIf="status" style="margin-top:12px;">
+    <strong>Status:</strong> {{status}}
+  </div>
+
+  <div *ngIf="status==='uploading'">
+    Upload progress: {{progress}}%
+  </div>
+
+  <div *ngIf="error" style="color:red;margin-top:12px;">
+    Error: {{error}}
+  </div>
+</div>
